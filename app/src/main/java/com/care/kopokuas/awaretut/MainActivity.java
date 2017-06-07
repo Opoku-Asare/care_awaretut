@@ -62,12 +62,15 @@ public class MainActivity extends AppCompatActivity {
         Intent aware = new Intent(this, Aware.class);
         startService(aware);
 
-        //Aware.startPlugin(this,"com.care.kopokuas.awaretut.CarePlugin");
+
+
+        Intent startPlugin = new Intent(this, Plugin.class);
+        startService(startPlugin);
 
         //Sync data to server every 1 minute
         Aware.setSetting(this, Aware_Preferences.FREQUENCY_WEBSERVICE, 1);
         //Clear old data monthly
         Aware.setSetting(this, Aware_Preferences.FREQUENCY_CLEAN_OLD_DATA, 2);
-       Aware.joinStudy(this,"https://api.awareframework.com/index.php/webservice/index/1319/JtQrj7MQCJoK");
+
     }
 }
