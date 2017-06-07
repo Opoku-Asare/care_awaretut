@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    tools:context="com.care.kopokuas.awaretut.MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:text="Person"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="193dp" />
+
+            <EditText
+                android:id="@+id/txtPerson"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:ems="10"
+                android:hint="Name"
+                android:inputType="textPersonName"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="4dp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:text="Sleep At"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="63dp" />
+
+            <DatePicker
+                android:id="@+id/dpkSleepAt"
+                android:layout_width="match_parent"
+                android:layout_height="208dp"
+                android:splitMotionEvents="false"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="89dp" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:text="Wake At"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="193dp" />
+
+            <DatePicker
+                android:id="@+id/dpkWakeAt"
+                android:layout_width="match_parent"
+                android:layout_height="225dp"
+                android:splitMotionEvents="false"
+                tools:layout_editor_absoluteX="18dp"
+                tools:layout_editor_absoluteY="223dp" />
+
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:text="Save"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="336dp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,28 @@
+
+/.gradle/
+/.idea/
+/build/
+*.iml
+/app/app.iml
+/app/build/
+/local.properties
+
+# Crashlytics configuations
+com_crashlytics_export_strings.xml
+
+
+
+
+# Signing files
+.signing/
+
+# User-specific configurations
+
+# OS-specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
