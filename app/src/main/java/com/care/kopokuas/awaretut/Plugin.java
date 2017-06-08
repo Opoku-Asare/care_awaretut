@@ -5,6 +5,7 @@ import android.net.Uri;
 
 import com.aware.Applications;
 import com.aware.Aware;
+import com.aware.Aware_Preferences;
 import com.aware.utils.Aware_Plugin;
 
 /**
@@ -31,6 +32,11 @@ public class Plugin extends Aware_Plugin {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
+
+        //Sync data to server every 1 minute
+        Aware.setSetting(this, Aware_Preferences.FREQUENCY_WEBSERVICE, 1);
+        //Clear old data monthly
+        Aware.setSetting(this, Aware_Preferences.FREQUENCY_CLEAN_OLD_DATA, 2);
 
         Applications.isAccessibilityServiceActive(getApplicationContext());
         if (!Aware.isStudy(this)) Aware.joinStudy(getApplicationContext(), "https://api.awareframework.com/index.php/webservice/index/1319/JtQrj7MQCJoK");

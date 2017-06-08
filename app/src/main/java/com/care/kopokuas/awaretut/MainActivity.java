@@ -20,36 +20,40 @@ import static com.care.kopokuas.awaretut.CareContentProvider.*;
 
 public class MainActivity extends AppCompatActivity {
     public EditText txtPersonName;
-    public DatePicker dpkSleepAt,dpkWakeAt;
+    public DatePicker dpkSleepAt, dpkWakeAt;
     public Button btnSave;
+
+    public String deviceID = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        txtPersonName= (EditText) findViewById(R.id.txtPerson);
-        dpkSleepAt=(DatePicker)findViewById(R.id.dpkSleepAt);
-        dpkWakeAt=(DatePicker)findViewById(R.id.dpkWakeAt);
-        btnSave=(Button)findViewById(R.id.btnSave);
+        txtPersonName = (EditText) findViewById(R.id.txtPerson);
+        dpkSleepAt = (DatePicker) findViewById(R.id.dpkSleepAt);
+        dpkWakeAt = (DatePicker) findViewById(R.id.dpkWakeAt);
+        btnSave = (Button) findViewById(R.id.btnSave);
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar calendar=Calendar.getInstance();
-                String person=txtPersonName.getText().toString();
-                calendar.set(dpkSleepAt.getYear(),dpkSleepAt.getMonth(),dpkSleepAt.getDayOfMonth());
-                long sleepAt=calendar.getTimeInMillis();
+                Calendar calendar = Calendar.getInstance();
+                String person = txtPersonName.getText().toString();
+                calendar.set(dpkSleepAt.getYear(), dpkSleepAt.getMonth(), dpkSleepAt.getDayOfMonth());
+                long sleepAt = calendar.getTimeInMillis();
 
-                calendar.set(dpkWakeAt.getYear(),dpkWakeAt.getMonth(),dpkSleepAt.getDayOfMonth());
-                long wakeAt=calendar.getTimeInMillis();
+                calendar.set(dpkWakeAt.getYear(), dpkWakeAt.getMonth(), dpkSleepAt.getDayOfMonth());
+                long wakeAt = calendar.getTimeInMillis();
 
                 ContentValues new_data = new ContentValues();
-                new_data.put(Sleep_Data.DEVICE_ID, Aware.getSetting(getApplicationContext(), Aware_Preferences.DEVICE_ID));
+                if (deviceID.equals(""))
+                    deviceID = Aware.getSetting(getApplicationContext(), Aware_Preferences.DEVICE_ID);
+                new_data.put(Sleep_Data.DEVICE_ID, deviceID);
                 new_data.put(Sleep_Data.TIMESTAMP, System.currentTimeMillis());
-                new_data.put(CareContentProvider.Sleep_Data.SLEEP_AT,sleepAt);
-                new_data.put(CareContentProvider.Sleep_Data.WAKE_AT,wakeAt);
-                new_data.put(CareContentProvider.Sleep_Data.PERSON,person);
+                new_data.put(CareContentProvider.Sleep_Data.SLEEP_AT, sleepAt);
+                new_data.put(CareContentProvider.Sleep_Data.WAKE_AT, wakeAt);
+                new_data.put(CareContentProvider.Sleep_Data.PERSON, person);
 
                 //put the rest of the columns you defined
 
@@ -63,14 +67,11 @@ public class MainActivity extends AppCompatActivity {
         startService(aware);
 
 
-
         Intent startPlugin = new Intent(this, Plugin.class);
         startService(startPlugin);
 
-        //Sync data to server every 1 minute
-        Aware.setSetting(this, Aware_Preferences.FREQUENCY_WEBSERVICE, 1);
-        //Clear old data monthly
-        Aware.setSetting(this, Aware_Preferences.FREQUENCY_CLEAN_OLD_DATA, 2);
+
+        deviceID = Aware.getSetting(getApplicationContext(), Aware_Preferences.DEVICE_ID);
 
     }
 }
