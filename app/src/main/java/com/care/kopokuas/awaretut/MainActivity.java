@@ -59,6 +59,10 @@ public class MainActivity extends AppCompatActivity {
 
                 //Insert the data to the ContentProvider
                 getContentResolver().insert(CareContentProvider.Sleep_Data.CONTENT_URI, new_data);
+
+                Intent startSync = new Intent(getApplicationContext(), Plugin.class);
+                startSync.setAction(Aware.ACTION_AWARE_SYNC_DATA);
+                startService(startSync);
             }
         });
 

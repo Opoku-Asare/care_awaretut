@@ -51,7 +51,7 @@ public class CareContentProvider extends ContentProvider {
     }
 
     public static final String DATABASE_NAME = "plugin_care.db";
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
     public static final String[] DATABASE_TABLES = {Sleep_Data.TABLE_NAME};
 
     public static final String[] TABLES_FIELDS = {
