@@ -2,6 +2,7 @@ package com.care.kopokuas.awaretut;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -51,9 +52,9 @@ public class MainActivity extends AppCompatActivity {
                     deviceID = Aware.getSetting(getApplicationContext(), Aware_Preferences.DEVICE_ID);
                 new_data.put(Sleep_Data.DEVICE_ID, deviceID);
                 new_data.put(Sleep_Data.TIMESTAMP, System.currentTimeMillis());
-                new_data.put(CareContentProvider.Sleep_Data.SLEEP_AT, sleepAt);
-                new_data.put(CareContentProvider.Sleep_Data.WAKE_AT, wakeAt);
-                new_data.put(CareContentProvider.Sleep_Data.PERSON, person);
+                new_data.put(CareContentProvider.Sleep_Data.SLEEP_AT, 500);
+                new_data.put(CareContentProvider.Sleep_Data.WAKE_AT, 600);
+                new_data.put(CareContentProvider.Sleep_Data.PERSON, "HAHA");
 
                 //put the rest of the columns you defined
 

@@ -25,7 +25,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <provider android:name="com.care.kopokuas.awaretut.CareContentProvider"
+        <provider
+            android:name="com.care.kopokuas.awaretut.CareContentProvider"
             android:authorities="${applicationId}.provider.syctut"
             android:exported="true"
             android:readPermission="com.aware.READ_CONTEXT_DATA"
