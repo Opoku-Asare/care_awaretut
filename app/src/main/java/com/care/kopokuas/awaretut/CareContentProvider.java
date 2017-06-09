@@ -1,6 +1,7 @@
 package com.care.kopokuas.awaretut;
 
 import android.content.ContentProvider;
+import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
@@ -26,7 +27,7 @@ import java.util.HashMap;
 public class CareContentProvider extends ContentProvider {
 
 
-    public static String AUTHORITY = "com.care.kopokuas.awaretut.provider";
+    public static String AUTHORITY = "com.care.kopokuas.awaretut.provider.syctut";
 
 
     public static final int COLLECTION_INDEX = 1;
@@ -44,8 +45,8 @@ public class CareContentProvider extends ContentProvider {
         public static final String WAKE_AT = "wake_at";
 
         public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + TABLE_NAME);
-        public static final String CONTENT_TYPE = "vnd.android.cursor.dir/vnd." + AUTHORITY + "." + TABLE_NAME;
-        public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd." + AUTHORITY + "." + TABLE_NAME;
+        public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE+"/vnd.com.care.kopokuas.awaretut.provider" + "." + TABLE_NAME;
+        public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE+"/vnd.com.care.kopokuas.awaretut.provider"+ "." +TABLE_NAME;
 
     }
 
@@ -99,7 +100,7 @@ public class CareContentProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
-        AUTHORITY = getContext().getPackageName() + ".provider"; //make AUTHORITY dynamic
+        AUTHORITY = getContext().getPackageName() + ".provider.syctut"; //make AUTHORITY dynamic
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
         uriMatcher.addURI(AUTHORITY, DATABASE_TABLES[0], COLLECTION_INDEX); //URI for all records
         uriMatcher.addURI(AUTHORITY, DATABASE_TABLES[0] + "/#", ITEM_INDEX); //URI for a single record
